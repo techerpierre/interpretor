@@ -94,6 +94,16 @@ void AstPrinter::VisitProgram(const Program& node) {
     std::cout << tabs(m_Depth) << brace(m_Depth, 1);
 }
 
+void AstPrinter::VisitBlockStatement(const BlockStatement& node) {
+    std::cout << tabs(m_Depth) << statement("BlockStatement") << brace(m_Depth);
+    m_Depth++;
+    for (const auto& stmt : node.body) {
+        Dispatch(*stmt);
+    }
+    m_Depth--;
+    std::cout << tabs(m_Depth) << brace(m_Depth, 1);
+}
+
 void ast::print(const Node& node) {
     AstPrinter printer;
     printer.Dispatch(node);

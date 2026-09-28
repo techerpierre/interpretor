@@ -13,6 +13,7 @@ enum class NodeKind {
     BINARY_EXPRESSION,
     UNARY_EXPRESSION,
     EXPRESSION_STATEMENT,
+    BLOCK_STATEMENT,
     PROGRAM,
     UNKNOWN,
 };
@@ -84,6 +85,12 @@ class ExpressionStatement : public Statement {
 public:
     std::unique_ptr<Expression> expression;
     ExpressionStatement() : Statement(NodeKind::EXPRESSION_STATEMENT) {}
+};
+
+class BlockStatement : public Statement {
+public:
+    std::vector<std::unique_ptr<Statement>> body;
+    BlockStatement() : Statement(NodeKind::BLOCK_STATEMENT) {}
 };
 
 }

@@ -54,6 +54,7 @@ public:
     void VisitUnaryExpression(const UnaryExpression& node) override;
     void VisitExpressionStatement(const ExpressionStatement& node) override;
     void VisitProgram(const Program& node) override;
+    void VisitBlockStatement(const BlockStatement& node) override;
 };
 
 void print(const Node& node);

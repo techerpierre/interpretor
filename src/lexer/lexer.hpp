@@ -19,7 +19,9 @@ const std::vector<std::pair<std::string, TokenKind>> ReservedSymbols = {
     {"*", TokenKind::MUL},
     {"/", TokenKind::TRUE_DIV},
     {"(", TokenKind::OPEN_PAR},
-    {")", TokenKind::CLOSE_PAR}
+    {")", TokenKind::CLOSE_PAR},
+    {"{", TokenKind::OPEN_BRACE},
+    {"}", TokenKind::CLOSE_BRACE}
 };
 
 struct LexingError {

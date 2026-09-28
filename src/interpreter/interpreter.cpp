@@ -113,6 +113,12 @@ void Interpreter::VisitProgram(const Program& node) {
     }
 }
 
+void Interpreter::VisitBlockStatement(const BlockStatement& node) {
+    for (const auto& stmt : node.body) {
+        Dispatch(*stmt);
+    }
+}
+
 Value Interpreter::GetLastValue(void) const {
     return m_lastValue;
 }

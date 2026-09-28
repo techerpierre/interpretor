@@ -16,6 +16,8 @@ enum class TokenKind {
     TRUE_DIV, // /
     OPEN_PAR, // (
     CLOSE_PAR, // )
+    OPEN_BRACE, // {
+    CLOSE_BRACE, // }
     END_OF_FILE // EOF
 };
 

@@ -26,6 +26,11 @@ public:
             Dispatch(*stmt);
         }
     }
+    virtual void VisitBlockStatement(const BlockStatement& node) {
+        for (const auto& stmt : node.body) {
+            Dispatch(*stmt);
+        }
+    }
     void Dispatch(const Node& node);
 };
 

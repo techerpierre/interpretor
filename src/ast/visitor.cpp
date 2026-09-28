@@ -35,5 +35,9 @@ void Visitor::Dispatch(const Node& node) {
         VisitProgram(prog);
         break;
     }
+    case NodeKind::BLOCK_STATEMENT:
+        const auto& blockStmt = static_cast<const BlockStatement&>(node);
+        VisitBlockStatement(blockStmt);
+        break;
     }
 }

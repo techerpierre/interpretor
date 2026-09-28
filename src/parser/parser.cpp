@@ -6,6 +6,7 @@ using namespace parser;
 
 namespace {
     std::unique_ptr<Statement> parseStatement(ParsingContext& ctx);
+    std::unique_ptr<Statement> parseBlockStatement(ParsingContext& ctx);
     std::unique_ptr<Expression> parseExpression(ParsingContext& ctx);
     std::unique_ptr<Expression> parseTermExpression(ParsingContext& ctx);
     std::unique_ptr<Expression> parseFactorExpression(ParsingContext& ctx);
@@ -14,9 +15,27 @@ namespace {
     std::unique_ptr<Expression> parseLiteralExpression(ParsingContext& ctx);
 
     std::unique_ptr<Statement> parseStatement(ParsingContext& ctx) {
+        if (ctx.Eat({ TokenKind::OPEN_BRACE })) {
+            return parseBlockStatement(ctx);
+        }
+
         auto st = std::make_unique<ExpressionStatement>();
         st->expression = parseExpression(ctx);
         return st;
+    }
+
+    std::unique_ptr<Statement> parseBlockStatement(ParsingContext& ctx) {
+        auto token = ctx.Peek();
+        auto block = std::make_unique<BlockStatement>();
+        block->position = token.pos;
+
+        while (!ctx.CheckType({TokenKind::CLOSE_BRACE}) && !ctx.IsEnd()) {
+            block->body.push_back(parseStatement(ctx));
+        }
+
+        ctx.EatOrFail({TokenKind::CLOSE_BRACE}, "Undelimited code block. Missing '{'.");
+
+        return block;
     }
 
     std::unique_ptr<Expression> parseExpression(ParsingContext& ctx) {

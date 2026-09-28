@@ -4,8 +4,9 @@
 #include <vector>
 #include <memory>
 #include <map>
-#include "token.hpp"
-#include "ast.hpp"
+#include "../lexer/token.hpp"
+#include "../ast/ast.hpp"
+#include "parsing_context.hpp"
 
 namespace parser {
 
@@ -23,22 +24,6 @@ const std::map<TokenKind, BinaryExpOperator> BinaryExprOperatorsMap = {
 const std::map<TokenKind, UnaryExpOperator> UnaryExprOperatorsMap = {
     {TokenKind::ADD, UnaryExpOperator::ADD},
     {TokenKind::SUB, UnaryExpOperator::SUB},
-};
-
-class ParsingContext {
-private:
-    size_t m_Cursor;
-    const std::vector<Token>& m_Tokens;
-public:
-    ParsingContext(const std::vector<Token>& tokens);
-
-    bool IsEnd(size_t offset = 0) const;
-    bool Eat(const std::vector<TokenKind>& expected);
-    const Token& EatOrFail(const std::vector<TokenKind>& expected, const char* errorMessage);
-    bool CheckType(const std::vector<TokenKind>& expected);
-    const Token& Peek(size_t offset = 0) const;
-    const Token& Advance(size_t offset = 1);
-    const Token& Previous(size_t offset = 1);
 };
 
 std::unique_ptr<Program> parse(const std::vector<Token>& tokens);

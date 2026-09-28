@@ -1,9 +1,9 @@
 #include "interpreter.hpp"
 #include <iostream>
 #include <cmath>
-#include "lexer.hpp"
-#include "parser.hpp"
-#include "error.hpp"
+#include "../lexer/lexer.hpp"
+#include "../parser/parser.hpp"
+#include "../core/error.hpp"
 
 using namespace interpreter;
 

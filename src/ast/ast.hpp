@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <memory>
-#include "position.hpp"
+#include "../core/position.hpp"
 
 namespace ast {
 

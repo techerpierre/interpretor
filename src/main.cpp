@@ -1,9 +1,8 @@
 #include <iostream>
 #include <string>
-#include "interpreter.hpp"
+#include "interpreter/interpreter.hpp"
 
 int main(void) {
-    //const std::string code = "2 * 2 + 3 * (2 + 3)"; // = 19
     std::string code;
     std::cout << "> "; 
 

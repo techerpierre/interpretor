@@ -1,6 +1,6 @@
 #include "lexer.hpp"
 #include <cctype>
-#include "error.hpp"
+#include "../core/error.hpp"
 
 using namespace lexer;
 

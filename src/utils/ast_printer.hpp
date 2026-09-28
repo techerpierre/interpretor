@@ -1,7 +1,7 @@
 #ifndef __AST_PRINTER__H__
 #define __AST_PRINTER__H__
 
-#include "visitor.hpp"
+#include "../ast/visitor.hpp"
 #include <map>
 #include <string>
 

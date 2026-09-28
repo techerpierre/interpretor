@@ -2,7 +2,7 @@
 #define __TOKEN__H__
 
 #include <string>
-#include "position.hpp"
+#include "../core/position.hpp"
 
 namespace token {
 

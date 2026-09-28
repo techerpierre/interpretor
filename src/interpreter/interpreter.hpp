@@ -2,8 +2,8 @@
 #define __INTERPRETER__H__
 
 #include <variant>
-#include "ast.hpp"
-#include "visitor.hpp"
+#include "../ast/ast.hpp"
+#include "../ast/visitor.hpp"
 
 namespace interpreter {
 

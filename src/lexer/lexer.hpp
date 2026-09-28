@@ -6,7 +6,7 @@
 #include <memory>
 #include <vector>
 #include "token.hpp"
-#include "position.hpp"
+#include "../core/position.hpp"
 
 namespace lexer {
 
